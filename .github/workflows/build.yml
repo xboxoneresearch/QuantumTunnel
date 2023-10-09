@@ -14,7 +14,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 7.0.x
     - name: Restore dependencies
       run: dotnet restore
 
@@ -24,7 +24,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: QuantumTunnel-dotnet
-        path: bin/Release/net6.0/*
+        path: bin/Release/net7.0/*
 
     - name: Build (standalone)
       run: dotnet publish -c Release --self-contained -r win-x64 -p:PublishTrimmed=true -p:PublishSingleFile=true
@@ -32,7 +32,7 @@ jobs:
       run: |
         mkdir release
         xcopy README.md release\
-        xcopy bin\Release\net6.0\win-x64\publish\QuantumTunnel.exe release\
+        xcopy bin\Release\net7.0\win-x64\publish\QuantumTunnel.exe release\
         7z a -tzip QuantumTunnel.zip .\release\*
 
     - name: Upload artifacts (standalone)
