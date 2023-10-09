@@ -10,9 +10,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.0.x
     - name: Restore dependencies
@@ -21,7 +21,7 @@ jobs:
     - name: Build
       run: dotnet build -c Release --no-restore
     - name: Upload artifacts (dotnet)
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: QuantumTunnel-dotnet
         path: bin/Release/net7.0/*
@@ -36,7 +36,7 @@ jobs:
         7z a -tzip QuantumTunnel.zip .\release\*
 
     - name: Upload artifacts (standalone)
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: QuantumTunnel
         path: |
